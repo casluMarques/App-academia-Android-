@@ -1,0 +1,46 @@
+# ==========================================
+# SEGURANÇA (NUNCA REMOVA ESTA LINHA)
+# ==========================================
+credentials.json
+*.pem
+*.key
+
+# ==========================================
+# BUILDOZER E ANDROID
+# ==========================================
+# Ignora a pasta gigante de cache, SDKs e NDKs do Android
+.buildozer/
+
+# Ignora os APKs gerados (Opcional, mas recomendado para não pesar o repositório)
+bin/
+
+# ==========================================
+# PYTHON
+# ==========================================
+# Arquivos compilados do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes Virtuais (se você estiver usando algum)
+venv/
+env/
+.venv/
+ENV/
+
+# ==========================================
+# KIVY
+# ==========================================
+# Ignora logs gerados pelo Kivy no computador
+.kivy/
+kivy_venv/
+
+# ==========================================
+# SISTEMA OPERACIONAL E IDE
+# ==========================================
+# VS Code
+.vscode/
+
+# Linux / Mac / Windows
+.DS_Store
+Thumbs.db

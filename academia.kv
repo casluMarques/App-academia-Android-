@@ -1,0 +1,118 @@
+ScreenManager:
+    MenuScreen:
+    TreinoScreen:
+    ExercicioScreen:
+
+<MenuScreen>:
+    name: 'menu'
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDTopAppBar:
+            title: "Treinão"
+            elevation: 4
+            
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: "40dp"
+            spacing: "30dp"
+            
+            MDLabel:
+                text: "Escolha seu treino de hoje"
+                font_style: "H5"
+                halign: "center"
+                size_hint_y: 0.2
+            
+            MDFillRoundFlatButton:
+                text: "TREINO SUPERIOR"
+                font_size: "18sp"
+                size_hint_x: 1
+                size_hint_y: None
+                height: "64dp"
+                on_release: app.abrir_treino('Superior')
+                
+            MDFillRoundFlatButton:
+                text: "TREINO INFERIOR"
+                font_size: "18sp"
+                size_hint_x: 1
+                size_hint_y: None
+                height: "64dp"
+                on_release: app.abrir_treino('Inferior')
+                
+            Widget:
+                size_hint_y: 0.4
+
+<TreinoScreen>:
+    name: 'treino'
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDTopAppBar:
+            id: toolbar_treino
+            title: "Carregando..."
+            left_action_items: [["arrow-left", lambda x: app.voltar_para('menu')]]
+            elevation: 4
+            
+        MDScrollView:
+            MDList:
+                id: lista_exercicios
+                padding: "10dp"
+
+<ExercicioScreen>:
+    name: 'exercicio'
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDTopAppBar:
+            id: toolbar_exercicio
+            title: "Exercício"
+            left_action_items: [["arrow-left", lambda x: app.voltar_para('treino')]]
+            elevation: 4
+            
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: "24dp"
+            spacing: "24dp"
+            
+            # Cartão de Destaque para Meta e Carga
+            MDCard:
+                orientation: 'vertical'
+                padding: "16dp"
+                size_hint_y: None
+                height: "100dp"
+                elevation: 2
+                radius: [15]
+                md_bg_color: app.theme_cls.primary_color
+                
+                MDLabel:
+                    id: info_meta
+                    text: "Meta: ..."
+                    halign: "center"
+                    font_style: "H6"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    
+                MDLabel:
+                    id: info_carga
+                    text: "Carga: ..."
+                    halign: "center"
+                    font_style: "Subtitle1"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 0.8
+                
+            MDScrollView:
+                MDBoxLayout:
+                    id: area_series
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: "15dp"
+                    
+            MDRaisedButton:
+                text: "FINALIZAR EXERCÍCIO"
+                font_size: "16sp"
+                size_hint_x: 1
+                size_hint_y: None
+                height: "56dp"
+                elevation: 2
+                on_release: root.verificar_resultado()
